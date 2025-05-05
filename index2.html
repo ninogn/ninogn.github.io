@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soluções Enxutas Consultoria</title>
+  <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7.20.15/babel.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body { font-family: 'Arial', sans-serif; margin: 0; }
+    .nav-link:hover { color: #FFD700; transition: color 0.3s ease; }
+    .hero-section { background: linear-gradient(to right, #003366, #99CC00); }
+    .diagnostic-form { background: #F5F5F5; padding: 1.5rem; border-radius: 8px; }
+    .animate-button { transition: transform 0.2s; }
+    .animate-button:hover { transform: scale(1.05); }
+    .section-image { max-width: 100%; height: auto; border-radius: 8px; }
+    .mobile-menu { transition: max-height 0.3s ease; }
+    @media (max-width: 640px) {
+      .nav-link { font-size: 0.9rem; }
+      .hero-section h2 { font-size: 1.8rem; }
+      .hero-section p { font-size: 1rem; }
+      .diagnostic-form { padding: 1rem; }
+      .diagnostic-form select, .diagnostic-form input { font-size: 0.9rem; }
+      .container { padding: 0 1rem; }
+      .mobile-menu { max-height: 0; overflow: hidden; }
+      .mobile-menu.open { max-height: 500px; }
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    function NavBar() {
+      const [isOpen, setIsOpen] = React.useState(false);
+
+      const toggleMenu = () => {
+        setIsOpen(!isOpen);
+      };
+
+      return (
+        <nav className="bg-gray-800 text-white p-4 fixed w-full top-0 z-10">
+          <div className="container mx-auto flex justify-between items-center">
+            <h1 className="text-lg sm:text-xl font-bold">Soluções Enxutas</h1>
+            <button className="sm:hidden text-white focus:outline-none" onClick={toggleMenu}>
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16m-7 6h7"}></path>
+              </svg>
+            </button>
+            <ul className={`sm:flex sm:space-x-6 ${isOpen ? 'mobile-menu open' : 'mobile-menu'} flex-col sm:flex-row w-full sm:w-auto absolute sm:static bg-gray-800 sm:bg-transparent left-0 top-14 sm:top-0`}>
+              <li className="sm:ml-0 ml-4 sm:mt-0 mt-2"><a href="#home" className="nav-link block py-2">Home</a></li>
+              <li className="sm:ml-0 ml-4 sm:mt-0 mt-2"><a href="#sobre" className="nav-link block py-2">Sobre</a></li>
+              <li className="sm:ml-0 ml-4 sm:mt-0 mt-2 relative group">
+                <a href="#servicos" className="nav-link block py-2">Serviços</a>
+                <ul className="sm:absolute sm:hidden sm:group-hover:block bg-gray-700 text-white p-2 rounded shadow-lg w-48 sm:mt-0 mt-2">
+                  <li><a href="#configuracao" className="block px-4 py-2 hover:bg-gray-600 text-sm">Configuração de Negócios</a></li>
+                  <li><a href="#eficiencia" className="block px-4 py-2 hover:bg-gray-600 text-sm">Eficiência Operacional</a></li>
+                  <li><a href="#manutencao" className="block px-4 py-2 hover:bg-gray-600 text-sm">Gestão de Manutenção</a></li>
+                  <li><a href="#eventos" className="block px-4 py-2 hover:bg-gray-600 text-sm">Planejamento de Eventos</a></li>
+                  <li><a href="#marketing" className="block px-4 py-2 hover:bg-gray-600 text-sm">Marketing</a></li>
+                </ul>
+              </li>
+              <li className="sm:ml-0 ml-4 sm:mt-0 mt-2"><a href="#diagnostico" className="nav-link block py-2">Diagnóstico</a></li>
+              <li className="sm:ml-0 ml-4 sm:mt-0 mt-2"><a href="#blog" className="nav-link block py-2">Blog</a></li>
+              <li className="sm:ml-0 ml-4 sm:mt-0 mt-2"><a href="#contato" className="nav-link block py-2">Contato</a></li>
+            </ul>
+          </div>
+        </nav>
+      );
+    }
+
+    function HeroSection() {
+      return (
+        <section id="home" className="hero-section text-white py-16 sm:py-20 text-center mt-16 sm:mt-0">
+          <div className="container mx-auto">
+            <h2 className="text-2xl sm:text-4xl font-bold mb-4">Cresça com Soluções Enxutas</h2>
+            <p className="text-base sm:text-lg mb-6">Consultoria prática para pequenos negócios e empreendedores.</p>
+            <a href="#diagnostico" className="bg-yellow-400 text-gray-800 px-4 sm:px-6 py-2 sm:py-3 rounded animate-button text-sm sm:text-base">Faça o Diagnóstico</a>
+            <img src="https://images.unsplash.com/photo-1516321310766-16f1c5b0695a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Equipe de consultoria" className="section-image mt-6 mx-auto" />
+          </div>
+        </section>
+      );
+    }
+
+    function SobreSection() {
+      return (
+        <section id="sobre" className="py-12 sm:py-16 bg-gray-100">
+          <div className="container mx-auto">
+            <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8">Sobre Nós</h2>
+            <p className="text-sm sm:text-base text-gray-700 max-w-2xl mx-auto mb-6">
+              Com mais de 15 anos de experiência em gestão operacional e desenvolvimento de negócios, Soluções Enxutas combina expertise em gastronomia e construção para oferecer consultoria prática. Fundador da premiada Pomona Pizzas e responsável por otimizar operações na Elvima Construções, nosso consultor traz soluções que transformam desafios em oportunidades.
+            </p>
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Consultor em ação" className="section-image mx-auto" />
+          </div>
+        </section>
+      );
+    }
+
+    function ServicosSection() {
+      return (
+        <section id="servicos" className="py-12 sm:py-16">
+          <div className="container mx-auto">
+            <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8">Nossos Serviços</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div id="configuracao" className="p-4 bg-white rounded shadow">
+                <h3 className="text-lg sm:text-xl font-semibold mb-2">Configuração de Negócios</h3>
+                <p className="text-sm sm:text-base text-gray-700">Planejamento e lançamento de novos empreendimentos com pesquisa de mercado e estratégias de marketing.</p>
+                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Planejamento de negócios" className="section-image mt-4" />
+              </div>
+              <div id="eficiencia" className="p-4 bg-white rounded shadow">
+                <h3 className="text-lg sm:text-xl font-semibold mb-2">Eficiência Operacional</h3>
+                <p className="text-sm sm:text-base text-gray-700">Otimização de processos para reduzir custos e aumentar produtividade.</p>
+                <img src="https://images.unsplash.com/photo-1516321310766-16f1c5b0695a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Eficiência operacional" className="section-image mt-4" />
+              </div>
+              <div id="manutencao" className="p-4 bg-white rounded shadow">
+                <h3 className="text-lg sm:text-xl font-semibold mb-2">Gestão de Manutenção</h3>
+                <p className="text-sm sm:text-base text-gray-700">Estratégias para minimizar paradas de equipamentos e prolongar a vida útil dos ativos.</p>
+                <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Manutenção de equipamentos" className="section-image mt-4" />
+              </div>
+              <div id="eventos" className="p-4 bg-white rounded shadow">
+                <h3 className="text-lg sm:text-xl font-semibold mb-2">Planejamento de Eventos</h3>
+                <p className="text-sm sm:text-base text-gray-700">Organização de eventos corporativos e promocionais para engajar seu público.</p>
+                <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Evento corporativo" className="section-image mt-4" />
+              </div>
+              <div id="marketing" className="p-4 bg-white rounded shadow">
+                <h3 className="text-lg sm:text-xl font-semibold mb-2">Marketing</h3>
+                <p className="text-sm sm:text-base text-gray-700">Estratégias de comunicação e conteúdo para fortalecer sua marca.</p>
+                <img src="https://images.unsplash.com/photo-1551288049-bebda0e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Estratégia de marketing" className="section-image mt-4" />
+              </div>
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function DiagnosticForm() {
+      const [formData, setFormData] = React.useState({
+        desafio: '', setor: '', tamanho: '', faturamento: '', urgencia: '',
+        impacto: '', orçamento: '', metas: '', consultoria: '', contato: ''
+      });
+      const [resultado, setResultado] = React.useState('');
+
+      const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+      };
+
+      const calculatePriority = () => {
+        let score = 0;
+        const scoring = {
+          desafio: { 'Outro': 3, '': 1, default: 2 },
+          setor: { gastronomia: 2, construcao: 2, default: 1 },
+          tamanho: { '1-5': 1, '6-20': 2, 'Mais de 20': 3 },
+          faturamento: { 'Até R$100.000': 1, 'R$100.001-R$1.000.000': 2, 'Acima de R$1.000.000': 3, 'Prefiro não informar': 0 },
+          urgencia: { 'Imediata': 3, 'Média': 2, 'Baixa': 1 },
+          impacto: { 'Alto': 3, 'Médio': 2, 'Baixo': 1 },
+          orçamento: { 'Até R$5.000': 1, 'R$5.001-R$20.000': 2, 'Acima de R$20.000': 3, 'Não definido': 0 },
+          metas: { '': 0, default: formData.metas.length > 20 ? 2 : 1 },
+          consultoria: { 'Sim, com sucesso': 2, 'Sim, sem sucesso': 1, 'Não': 0 },
+          contato: { '': 0, default: 1 }
+        };
+
+        Object.keys(formData).forEach((key) => {
+          const value = formData[key];
+          const rules = scoring[key];
+          if (rules[value]) score += rules[value];
+          else if (rules.default) score += rules.default;
+        });
+
+        return score;
+      };
+
+      const getProfile = () => {
+        if (formData.tamanho === '1-5' || formData.faturamento === 'Até R$100.000') return 'Iniciante';
+        if (formData.tamanho === '6-20' || formData.faturamento === 'R$100.001-R$1.000.000') return 'Em Crescimento';
+        return 'Estabelecido';
+      };
+
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        const score = calculatePriority();
+        const profile = getProfile();
+        let priority = score <= 10 ? 'Baixa' : score <= 20 ? 'Média' : 'Alta';
+        let sugestao = '';
+
+        switch (formData.desafio) {
+          case 'novo_negocio':
+            sugestao = 'Recomendamos nossa Configuração de Negócios para lançar seu empreendimento com sucesso.';
+            break;
+          case 'eficiencia':
+            sugestao = 'Nossa Consultoria em Eficiência Operacional pode reduzir custos e otimizar processos.';
+            break;
+          case 'manutencao':
+            sugestao = 'A Consultoria em Gestão de Manutenção minimizará paradas de equipamentos.';
+            break;
+          case 'eventos':
+            sugestao = 'Nosso Planejamento de Eventos criará experiências memoráveis para sua marca.';
+            break;
+          case 'marketing':
+            sugestao = 'As Estratégias de Marketing fortalecerão sua presença no mercado.';
+            break;
+          default:
+            sugestao = 'Vamos analisar seu desafio e propor uma solução personalizada.';
+        }
+
+        setResultado(`Prioridade: ${priority} | Perfil: ${profile} | ${sugestao}`);
+      };
+
+      return (
+        <section id="diagnostico" className="py-12 sm:py-16">
+          <div className="container mx-auto">
+            <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8">Ferramenta de Diagnóstico</h2>
+            <form onSubmit={handleSubmit} className="diagnostic-form max-w-md mx-auto">
+              <div className="mb-4">
+                <label className="block mb-2 text-gray-700 text-sm sm:text-base">Principal desafio do negócio:</label>
+                <select name="desafio" onChange={handleChange} className="w-full p-2 border rounded text-sm sm:text-base">
+                  <option value="">Selecione</option>
+                  <option value="novo_negocio">Lançar um novo negócio</option>
+                  <option value="eficiencia">Melhorar eficiência operacional</option>
+                  <option value="manutencao">Gerenciar manutenção</option>
+                  <option value="eventos">Planejar eventos</option>
+                  <option value="marketing">Fortalecer marketing</option>
+                  <option value="Outro">Outro</option>
+                </select>
+              </div>
+              <div className="mb-4">
+                <label className="block mb-2 text-gray-700 text-sm sm:text-base">Setor do negócio:</label>
+                <select name="setor" onChange={handleChange} className="w-full p-2 border rounded text-sm sm:text-base">
+                  <option value="">Selecione</option>
+                  <option value="gastronomia">Gastronomia</option>
+                  <option value="construcao">Construção</option>
+                  <option value="varejo">Varejo</option>
+                  <option value="servicos">Serviços</option>
+                  <option value="tecnologia">Tecnologia</option>
+                  <option value="Outro">Outro</option>
+                </select>
+              </div>
+              <div className="mb-4">
+                <label className="block mb-2 text-gray-700 text-sm sm:text-base">Tamanho do negócio:</label>
+                <select name="tamanho" onChange={handleChange} className="w-full p-2 border rounded text-sm sm:text-base">
+                  <option value="">Selecione</option>
+                  <option value="1-5">1-5 funcionários</option>
+                  <option value="6-20">6-20 funcionários</option>
+                  <option value="Mais de 20">Mais de 20 funcionários</option>
+                </select>
+              </div>
+              <div className="mb-4">
+                <label className="block mb-2 text-gray-700 text-sm sm:text-base">Faturamento anual aproximado:</label>
+                <select name="faturamento" onChange={handleChange} className="w-full p-2 border rounded text-sm sm:text-base">
+                  <option value="">Selecione</option>
+                  <option value="Até R$100.000">Até R$100.000</option>
+                  <option value="R$100.001-R$1.000.000">R$100.001-R$1.000.000</option>
+                  <option value="Acima de R$1.000.000">Acima de R$1.000.000</option>
+                  <option value="Prefiro não informar">Prefiro não informar</option>
+                </select>
+              </div>
+              <div className="mb-4">
+                <label className="block mb-2 text-gray-700 text-sm sm:text-base">Urgência para resolver o desafio:</label>
+                <select name="urgencia" onChange={handleChange} className="w-full p-2 border rounded text-sm sm:text-base">
+                  <option value="">Selecione</option>
+                  <option value="Imediata">Imediata (1-3 meses)</option>
+                  <option value="Média">Média (3-6 meses)</option>
+                  <option value="Baixa">Baixa (6+ meses)</option>
+                </select>
+              </div>
+              <div className="mb-4">
+                <label className="block mb-2 text-gray-700 text-sm sm:text-base">Impacto do desafio no negócio:</label>
+                <select name="impacto" onChange={handleChange} className="w-full p-2 border rounded text-sm sm:text-base">
+                  <option value="">Selecione</option>
+                  <option value="Alto">Alto (afeta lucros ou operações significativamente)</option>
+                  <option value="Médio">Médio (causa inconvenientes)</option>
+                  <option value="Baixo">Baixo (pouco impacto)</option>
+                </select>
+              </div>
+              <div className="mb-4">
+                <label className="block mb-2 text-gray-700 text-sm sm:text-base">Orçamento aproximado:</label>
+                <select name="orçamento" onChange={handleChange} className="w-full p-2 border rounded text-sm sm:text-base">
+                  <option value="">Selecione</option>
+                  <option value="Até R$5.000">Até R$5.000</option>
+                  <option value="R$5.001-R$20.000">R$5.001-R$20.000</option>
+                  <option value="Acima de R$20.000">Acima de R$20.000</option>
+                  <option value="Não definido">Não definido</option>
+                </select>
+              </div>
+              <div className="mb-4">
+                <label className="block mb-2 text-gray-700 text-sm sm:text-base">Metas de curto prazo (6-12 meses):</label>
+                <input
+                  type="text"
+                  name="metas"
+                  value={formData.metas}
+                  onChange={handleChange}
+                  className="w-full p-2 border rounded text-sm sm:text-base"
+                  placeholder="Ex.: Aumentar vendas, reduzir custos"
+                />
+              </div>
+              <div className="mb-4">
+                <label className="block mb-2 text-gray-700 text-sm sm:text-base">Já contratou consultoria antes?</label>
+                <select name="consultoria" onChange={handleChange} className="w-full p-2 border rounded text-sm sm:text-base">
+                  <option value="">Selecione</option>
+                  <option value="Sim, com sucesso">Sim, com sucesso</option>
+                  <option value="Sim, sem sucesso">Sim, sem sucesso</option>
+                  <option value="Não">Não</option>
+                </select>
+              </div>
+              <div className="mb-4">
+                <label className="block mb-2 text-gray-700 text-sm sm:text-base">Melhor canal para contato:</label>
+                <select name="contato" onChange={handleChange} className="w-full p-2 border rounded text-sm sm:text-base">
+                  <option value="">Selecione</option>
+                  <option value="Email">Email</option>
+                  <option value="WhatsApp">WhatsApp</option>
+                  <option value="Telefone">Telefone</option>
+                  <option value="Outro">Outro</option>
+                </select>
+              </div>
+              <button type="submit" className="bg-yellow-400 text-gray-800 px-4 sm:px-6 py-2 sm:py-3 rounded animate-button text-sm sm:text-base w-full sm:w-auto">Enviar</button>
+              {resultado && (
+                <div className="mt-6 p-4 border rounded bg-white">
+                  <h3 className="text-base sm:text-lg font-bold">Resultado do Diagnóstico</h3>
+                  <p className="text-sm sm:text-base">{resultado}</p>
+                  <p className="text-sm sm:text-base">Entre em contato: <a href="mailto:contato@solucoesenxutas.com" className="text-blue-600">contato@solucoesenxutas.com</a></p>
+                </div>
+              )}
+            </form>
+            <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Formulário de diagnóstico" className="section-image mt-6 mx-auto" />
+          </div>
+        </section>
+      );
+    }
+
+    function BlogSection() {
+      return (
+        <section id="blog" className="py-12 sm:py-16 bg-gray-100">
+          <div className="container mx-auto">
+            <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8">Blog</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="p-4 bg-white rounded shadow">
+                <h3 className="text-lg sm:text-xl font-semibold mb-2">Como Otimizar a Manutenção de Equipamentos</h3>
+                <p className="text-sm sm:text-base text-gray-700">Aprenda estratégias comprovadas para reduzir paradas de máquinas, como fizemos na Elvima Construções, diminuindo o tempo de inatividade de semanas para 48 horas.</p>
+                <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Manutenção de equipamentos" className="section-image mt-4" />
+              </div>
+              <div className="p-4 bg-white rounded shadow">
+                <h3 className="text-lg sm:text-xl font-semibold mb-2">Lançando um Negócio Gastronômico</h3>
+                <p className="text-sm sm:text-base text-gray-700">Dicas baseadas na experiência da Pomona Pizzas, que venceu o Prêmio RioShow de Gastronomia em menos de um ano.</p>
+                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Restaurante" className="section-image mt-4" />
+              </div>
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function ContatoSection() {
+      return (
+        <section id="contato" className="py-12 sm:py-16">
+          <div className="container mx-auto">
+            <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8">Entre em Contato</h2>
+            <p className="text-sm sm:text-base text-gray-700 max-w-2xl mx-auto mb-6">
+              Estamos prontos para ajudar seu negócio a crescer. Preencha o formulário ou entre em contato diretamente pelo WhatsApp ou email.
+            </p>
+            <form className="max-w-md mx-auto">
+              <div className="mb-4">
+                <label className="block mb-2 text-gray-700 text-sm sm:text-base">Nome:</label>
+                <input type="text" className="w-full p-2 border rounded text-sm sm:text-base" placeholder="Seu nome" />
+              </div>
+              <div className="mb-4">
+                <label className="block mb-2 text-gray-700 text-sm sm:text-base">Email:</label>
+                <input type="email" className="w-full p-2 border rounded text-sm sm:text-base" placeholder="Seu email" />
+              </div>
+              <div className="mb-4">
+                <label className="block mb-2 text-gray-700 text-sm sm:text-base">Mensagem:</label>
+                <textarea className="w-full p-2 border rounded text-sm sm:text-base" rows="4" placeholder="Sua mensagem"></textarea>
+              </div>
+              <button type="submit" className="bg-yellow-400 text-gray-800 px-4 sm:px-6 py-2 sm:py-3 rounded animate-button text-sm sm:text-base w-full sm:w-auto">Enviar</button>
+            </form>
+            <img src="https://images.unsplash.com/photo-1516321310766-16f1c5b0695a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Contato com cliente" className="section-image mt-6 mx-auto" />
+          </div>
+        </section>
+      );
+    }
+
+    function Footer() {
+      return (
+        <footer className="bg-gray-800 text-white py-6 sm:py-8">
+          <div className="container mx-auto text-center">
+            <p className="text-sm sm:text-base">© 2025 Soluções Enxutas Consultoria. Todos os direitos reservados.</p>
+            <p className="text-sm sm:text-base"><a href="mailto:contato@solucoesenxutas.com" className="text-yellow-400">contato@solucoesenxutas.com</a></p>
+          </div>
+        </footer>
+      );
+    }
+
+    function App() {
+      return (
+        <div>
+          <NavBar />
+          <HeroSection />
+          <SobreSection />
+          <ServicosSection />
+          <DiagnosticForm />
+          <BlogSection />
+          <ContatoSection />
+          <Footer />
+        </div>
+      );
+    }
+
+    ReactDOM.render(<App />, document.getElementById('root'));
+  </script>
+</body>
+</html>
