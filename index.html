@@ -12,13 +12,20 @@
     <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7.20.15/babel.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Arial', sans-serif;
             margin: 0;
-            background-color: #F5F7FA;
-            color: #333;
+            background-color: #FFFFFF;
+            color: #181A20;
             scroll-behavior: smooth;
+        }
+        .font-poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+        .font-inter {
+            font-family: 'Inter', sans-serif;
         }
         h2 {
             margin-top: 24px;
@@ -28,7 +35,7 @@
             transition: color 0.3s ease;
         }
         .hero-section {
-            background: linear-gradient(to right, #003366, #004080);
+            background: linear-gradient(to right, #1F2937, #374151);
             position: relative;
             text-align: center;
             padding: 4rem 1rem;
@@ -47,7 +54,7 @@
             display: block;
         }
         .diagnostic-form {
-            background: #FFFFFF;
+            background: #1F2937;
             padding: 1.5rem;
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -70,19 +77,19 @@
         }
         .progress {
             height: 1rem;
-            background-color: #ECEFF1;
+            background-color: #4B5563;
         }
         .progress-bar {
-            background-color: #99CC00;
+            background-color: #10B981;
         }
         .testimonials {
-            background: #FFF;
+            background: #FFFFFF;
             margin: 20px 0;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         .testimonials h2 {
-            color: #003366;
+            color: #181A20;
             text-align: center;
             margin-bottom: 20px;
             font-size: 1.8em;
@@ -93,13 +100,13 @@
             gap: 20px;
         }
         .testimonial-item {
-            background: #f4f4f4;
+            background: #1F2937;
             padding: 20px;
             border-radius: 5px;
             text-align: center;
         }
         .testimonial-item h4 {
-            color: #003366;
+            color: #FFFFFF;
             margin-bottom: 10px;
         }
         @media (max-width: 640px) {
@@ -133,12 +140,9 @@
 </head>
 <body>
     <div id="root"></div>
-
     <script type="text/babel">
         const { useState, useContext, createContext } = React;
-
         const QuizContext = createContext();
-
         const QuizProvider = ({ children }) => {
             const [quizResults, setQuizResults] = useState(null);
             return (
@@ -150,27 +154,23 @@
 
         function NavBar() {
             const [isOpen, setIsOpen] = useState(false);
-
-            const toggleMenu = () => {
-                setIsOpen(!isOpen);
-            };
-
+            const toggleMenu = () => setIsOpen(!isOpen);
             return (
-                <nav className="bg-gray-800 text-white p-4 fixed w-full top-0 z-10">
+                <nav className="bg-gray-900 text-white p-4 fixed w-full top-0 z-10">
                     <div className="container mx-auto flex justify-between items-center">
-                        <h1 className="text-lg sm:text-xl font-bold">Solaz</h1>
+                        <h1 className="text-lg sm:text-xl font-bold font-poppins">Solaz</h1>
                         <button className="sm:hidden text-white focus:outline-none" onClick={toggleMenu}>
                             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16m-7 6h7"}></path>
                             </svg>
                         </button>
-                        <ul className={`sm:flex sm:space-x-6 ${isOpen ? 'mobile-menu open' : 'mobile-menu'} flex-col sm:flex-row w-full sm:w-auto absolute sm:static bg-gray-800 sm:bg-transparent left-0 top-14 sm:top-0`}>
-                            <li className="sm:ml-0 ml-4 sm:mt-0 mt-2"><a href="#home" className="nav-link block py-2">Início</a></li>
-                            <li className="sm:ml-0 ml-4 sm:mt-0 mt-2"><a href="#sobre" className="nav-link block py-2">Sobre</a></li>
-                            <li className="sm:ml-0 ml-4 sm:mt-0 mt-2"><a href="#servicos" className="nav-link block py-2">Serviços</a></li>
-                            <li className="sm:ml-0 ml-4 sm:mt-0 mt-2"><a href="#testemunhos" className="nav-link block py-2">Depoimentos</a></li>
-                            <li className="sm:ml-0 ml-4 sm:mt-0 mt-2"><a href="#diagnostico" className="nav-link block py-2">Diagnóstico</a></li>
-                            <li className="sm:ml-0 ml-4 sm:mt-0 mt-2"><a href="#contato" className="nav-link block py-2">Contato</a></li>
+                        <ul className={`sm:flex sm:space-x-6 ${isOpen ? 'mobile-menu open' : 'mobile-menu'} flex-col sm:flex-row w-full sm:w-auto absolute sm:static bg-gray-900 left-0 top-14 sm:top-0`}>
+                            <li className="sm:ml-0 ml-4 sm:mt-0 mt-2"><a href="#home" className="nav-link block py-2 font-inter">Início</a></li>
+                            <li className="sm:ml-0 ml-4 sm:mt-0 mt-2"><a href="#sobre" className="nav-link block py-2 font-inter">Sobre</a></li>
+                            <li className="sm:ml-0 ml-4 sm:mt-0 mt-2"><a href="#servicos" className="nav-link block py-2 font-inter">Serviços</a></li>
+                            <li className="sm:ml-0 ml-4 sm:mt-0 mt-2"><a href="#testemunhos" className="nav-link block py-2 font-inter">Depoimentos</a></li>
+                            <li className="sm:ml-0 ml-4 sm:mt-0 mt-2"><a href="#diagnostico" className="nav-link block py-2 font-inter">Diagnóstico</a></li>
+                            <li className="sm:ml-0 ml-4 sm:mt-0 mt-2"><a href="#contato" className="nav-link block py-2 font-inter">Contato</a></li>
                         </ul>
                     </div>
                 </nav>
@@ -179,25 +179,24 @@
 
         function HeroSection() {
             return (
-                <section id="home" className="hero-section text-white py-12 sm:py-16 text-center mt-16 sm:mt-0">
+                <section id="home" className="hero-section bg-gray-900 text-white py-12 sm:py-16 text-center mt-16 sm:mt-0">
                     <div className="container mx-auto">
-                        <h2 className="text-2xl sm:text-3xl font-bold mb-4">Vamos Fazer Seu Negócio Brilhar?</h2>
-                        <p className="text-base sm:text-lg mb-6">Consultoria prática e personalizada para sua empresa!</p>
-                        <svg viewBox="0 0 600 600" fill="none" stroke="#FFD700" strokeWidth="3">
-                            <image href="solaz.PNG" x="0" y="0"width="300%" height="300%"/>
+                        <h2 className="text-2xl sm:text-3xl font-bold font-poppins mb-4">Vamos Fazer Seu Negócio Brilhar?</h2>
+                        <p className="text-base sm:text-lg font-inter mb-6">Consultoria prática e personalizada para sua empresa!</p>
+                        <svg viewBox="45 50 100 100" fill="none" stroke="#FFD700" strokeWidth="3">
+                            <image href="solaz.PNG" x="0" y="0" width="190%" height="190%"/>
                         </svg>
-                        <a href="#diagnostico" className="bg-yellow-400 text-gray-800 px-4 sm:px-6 py-2 sm:py-3 rounded animate-button text-sm sm:text-base">Comece com o Diagnóstico Grátis</a>
+                        <a href="#diagnostico" className="bg-yellow-400 text-gray-800 px-4 sm:px-6 py-2 sm:py-3 rounded-full animate-button text-sm sm:text-base">Comece com o Diagnóstico Grátis</a>
                     </div>
                 </section>
             );
         }
-
         function SobreSection() {
             return (
-                <section id="sobre" className="py-10 sm:py-12 bg-gray-100">
+                <section id="sobre" className="py-10 sm:py-12 bg-white">
                     <div className="container mx-auto">
-                        <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6">Quem Somos</h2>
-                        <p className="text-sm sm:text-base text-gray-700 max-w-2xl mx-auto mb-6">
+                        <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 font-poppins text-gray-900">Quem Somos</h2>
+                        <p className="text-sm sm:text-base text-gray-700 max-w-2xl mx-auto mb-6 font-inter">
                             Na Solaz, trazemos 15 anos de experiência em pizzarias e logística para ajudar pequenos negócios a crescerem com leveza. Nosso time combina expertise com um jeito descontraído, transformando desafios em oportunidades!
                         </p>
                         <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Empreendedores em uma lanchonete brasileira" className="section-image mx-auto" />
@@ -208,34 +207,44 @@
 
         function ServicosSection() {
             return (
-                <section id="servicos" className="py-10 sm:py-12">
+                <section id="servicos" className="py-10 sm:py-12 bg-white">
                     <div className="container mx-auto">
-                        <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6">Nossos Serviços</h2>
+                        <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 font-poppins text-gray-900">Nossos Serviços</h2>
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                            <div className="p-4 bg-white rounded shadow">
-                                <h3 className="text-lg sm:text-xl font-semibold mb-2">Configuração de Negócios</h3>
-                                <p className="text-sm sm:text-base text-gray-700">Lançar sua ideia nunca foi tão fácil! Criamos planos simples e estratégias que conectam com seus clientes.</p>
-                                <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Empreendedora planejando em loja de rua" className="section-image mt-4" />
+                            <div className="bg-gray-900 text-white rounded-lg shadow-lg overflow-hidden">
+                                <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Empreendedora planejando em loja de rua" className="w-full h-48 object-cover" />
+                                <div className="p-4">
+                                    <h3 className="text-lg sm:text-xl font-semibold font-poppins mb-2">Configuração de Negócios</h3>
+                                    <p className="text-sm sm:text-base font-inter">Lançar sua ideia nunca foi tão fácil! Criamos planos simples e estratégias que conectam com seus clientes.</p>
+                                </div>
                             </div>
-                            <div className="p-4 bg-white rounded shadow">
-                                <h3 className="text-lg sm:text-xl font-semibold mb-2">Eficiência Operacional</h3>
-                                <p className="text-sm sm:text-base text-gray-700">Economize tempo e dinheiro com processos otimizados, inspirados em pizzarias premiadas.</p>
-                                <img src="https://images.pexels.com/photos/3182834/pexels-photo-3182834.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Equipe organizando estoque em mercado local" className="section-image mt-4" />
+                            <div className="bg-gray-900 text-white rounded-lg shadow-lg overflow-hidden">
+                                <img src="https://images.pexels.com/photos/3182834/pexels-photo-3182834.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Equipe organizando estoque em mercado local" className="w-full h-48 object-cover" />
+                                <div className="p-4">
+                                    <h3 className="text-lg sm:text-xl font-semibold font-poppins mb-2">Eficiência Operacional</h3>
+                                    <p className="text-sm sm:text-base font-inter">Economize tempo e dinheiro com processos otimizados, inspirados em pizzarias premiadas.</p>
+                                </div>
                             </div>
-                            <div className="p-4 bg-white rounded shadow">
-                                <h3 className="text-lg sm:text-xl font-semibold mb-2">Gestão de Manutenção</h3>
-                                <p className="text-sm sm:text-base text-gray-700">Seus equipamentos funcionando sem parar, com soluções práticas.</p>
-                                <img src="https://images.pexels.com/photos/4481258/pexels-photo-4481258.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Técnico em oficina brasileira" className="section-image mt-4" />
+                            <div className="bg-gray-900 text-white rounded-lg shadow-lg overflow-hidden">
+                                <img src="https://images.pexels.com/photos/4481258/pexels-photo-4481258.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Técnico em oficina brasileira" className="w-full h-48 object-cover" />
+                                <div className="p-4">
+                                    <h3 className="text-lg sm:text-xl font-semibold font-poppins mb-2">Gestão de Manutenção</h3>
+                                    <p className="text-sm sm:text-base font-inter">Seus equipamentos funcionando sem parar, com soluções práticas.</p>
+                                </div>
                             </div>
-                            <div className="p-4 bg-white rounded shadow">
-                                <h3 className="text-lg sm:text-xl font-semibold mb-2">Planejamento de Eventos</h3>
-                                <p className="text-sm sm:text-base text-gray-700">Eventos que aproximam sua marca do público de forma inesquecível.</p>
-                                <img src="https://images.pexels.com/photos/3184296/pexels-photo-3184296.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Feira local com pequenos empreendedores" className="section-image mt-4" />
+                            <div className="bg-gray-900 text-white rounded-lg shadow-lg overflow-hidden">
+                                <img src="https://images.pexels.com/photos/3184296/pexels-photo-3184296.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Feira local com pequenos empreendedores" className="w-full h-48 object-cover" />
+                                <div className="p-4">
+                                    <h3 className="text-lg sm:text-xl font-semibold font-poppins mb-2">Planejamento de Eventos</h3>
+                                    <p className="text-sm sm:text-base font-inter">Eventos que aproximam sua marca do público de forma inesquecível.</p>
+                                </div>
                             </div>
-                            <div className="p-4 bg-white rounded shadow">
-                                <h3 className="text-lg sm:text-xl font-semibold mb-2">Marketing</h3>
-                                <p className="text-sm sm:text-base text-gray-700">Estratégias criativas para destacar sua marca e atrair clientes.</p>
-                                <img src="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Jovem criando conteúdo para redes sociais" className="section-image mt-4" />
+                            <div className="bg-gray-900 text-white rounded-lg shadow-lg overflow-hidden">
+                                <img src="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Jovem criando conteúdo para redes sociais" className="w-full h-48 object-cover" />
+                                <div className="p-4">
+                                    <h3 className="text-lg sm:text-xl font-semibold font-poppins mb-2">Marketing</h3>
+                                    <p className="text-sm sm:text-base font-inter">Estratégias criativas para destacar sua marca e atrair clientes.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -243,356 +252,367 @@
             );
         }
         function TestemunhosSection() {
-            return (
-                <section id="testemunhos" className="py-10 sm:py-12 bg-gray-100">
-                    <div className="container mx-auto">
-                        <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 text-blue-900">O que Nossos Clientes Dizem</h2>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                            <div className="p-4 bg-white rounded shadow">
-                                <p className="text-sm sm:text-base text-gray-700">"A Solaz transformou minha lanchonete! Reduzimos o tempo de espera em 20% e os clientes estão voltando mais!"</p>
-                                <h4 className="text-lg font-semibold mt-2 text-blue-900">João, Lanchonete Sabor</h4>
-                            </div>
-                            <div className="p-4 bg-white rounded shadow">
-                                <p className="text-sm sm:text-base text-gray-700">"Com o marketing da Solaz, minha loja ganhou 200 novos seguidores em um mês. Simplesmente incrível!"</p>
-                                <h4 className="text-lg font-semibold mt-2 text-blue-900">Ana, Boutique Estilo</h4>
-                            </div>
+    return (
+        <section id="testemunhos" className="py-10 sm:py-12 bg-white">
+            <div className="container mx-auto">
+                <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 font-poppins text-gray-900">O que Nossos Clientes Dizem</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div className="bg-gray-900 text-white p-4 rounded-lg shadow-lg">
+                        <p className="text-sm sm:text-base font-inter">"A Solaz transformou minha lanchonete! Reduzimos o tempo de espera em 20% e os clientes estão voltando mais!"</p>
+                        <h4 className="text-lg font-semibold mt-2 font-poppins">João, Lanchonete Sabor</h4>
+                    </div>
+                    <div className="bg-gray-900 text-white p-4 rounded-lg shadow-lg">
+                        <p className="text-sm sm:text-base font-inter">"Com o marketing da Solaz, minha loja ganhou 200 novos seguidores em um mês. Simplesmente incrível!"</p>
+                        <h4 className="text-lg font-semibold mt-2 font-poppins">Ana, Boutique Estilo</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+}
+
+function DiagnosticForm() {
+    const [formData, setFormData] = useState({
+        answers: {},
+        desafio: '', setor: '', urgencia: '', metas: ''
+    });
+    const { quizResults, setQuizResults } = useContext(QuizContext);
+
+    const questions = [
+        "Você sabe exatamente o que o seu negócio representa e o que quer alcançar com ele?",
+        "Você conhece bem os seus clientes e o que eles precisam?",
+        "Você tem um plano para o seu negócio que inclui metas financeiras?",
+        "Você controla regularmente seus ganhos e despesas?",
+        "Você tem procedimentos escritos para como o seu negócio funciona?",
+        "Você verifica frequentemente se o seu negócio está alcançando os objetivos esperados?",
+        "Você tem estratégias para atrair novos clientes e manter os atuais?",
+        "Você sabe quem são os seus concorrentes e o que o diferencia deles?",
+        "Você tem planos para fazer o seu negócio crescer mais?",
+        "Você se sente confortável com as partes técnicas do seu negócio, ou precisa de ajuda?"
+    ];
+
+    const handleAnswerChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            answers: { ...prev.answers, [name]: value }
+        }));
+    };
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
+    };
+
+    const calculateScore = () => {
+        let score = 0;
+        for (let key in formData.answers) {
+            if (formData.answers[key] === 'sim') score++;
+        }
+        return score;
+    };
+
+    const getPriority = () => {
+        let priorityScore = 0;
+        const scoring = {
+            desafio: { 'novo_negocio': 3, 'eficiencia': 3, 'manutencao': 2, 'eventos': 2, 'marketing': 2, '': 1, default: 2 },
+            setor: { gastronomia: 2, construcao: 2, default: 1 },
+            urgencia: { 'Imediata': 3, 'Média': 2, 'Baixa': 1, '': 1 },
+            metas: { '': 0, default: formData.metas.length > 20 ? 2 : 1 }
+        };
+
+        Object.keys(scoring).forEach((key) => {
+            const value = formData[key];
+            const rules = scoring[key];
+            if (rules[value]) priorityScore += rules[value];
+            else if (rules.default) priorityScore += rules.default;
+        });
+
+        return priorityScore <= 5 ? 'Baixa' : priorityScore <= 8 ? 'Média' : 'Alta';
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const score = calculateScore();
+        const priority = getPriority();
+        let feedback = '';
+        let suggestion = '';
+
+        if (score >= 8) {
+            feedback = "Seu negócio está brilhando, mas podemos acelerar ainda mais!";
+        } else if (score >= 5) {
+            feedback = "Você tem uma boa base, mas um empurrãozinho faz a diferença. Vamos juntos?";
+        } else {
+            feedback = "Seu negócio precisa de um toque especial para decolar. A Solaz te ajuda!";
+        }
+
+        switch (formData.desafio) {
+            case 'novo_negocio':
+                suggestion = 'Nosso pacote de Configuração de Negócios vai lançar sua ideia com tudo!';
+                break;
+            case 'eficiencia':
+                suggestion = 'A Eficiência Operacional da Solaz vai simplificar e economizar na sua operação.';
+                break;
+            case 'manutencao':
+                suggestion = 'Com Gestão de Manutenção, seus equipamentos nunca te deixam na mão!';
+                break;
+            case 'eventos':
+                suggestion = 'Nosso Planejamento de Eventos cria momentos que sua marca merece.';
+                break;
+            case 'marketing':
+                suggestion = 'Turbine sua presença com nossas Estratégias de Marketing vibrantes!';
+                break;
+            default:
+                suggestion = 'Vamos criar uma solução sob medida para seu desafio!';
+        }
+
+        setQuizResults({ score, priority, feedback, suggestion });
+    };
+
+    const totalQuestions = 10;
+    const answeredCount = Object.keys(formData.answers).length;
+    const progress = (answeredCount / totalQuestions) * 100;
+
+    return (
+        <section id="diagnostico" className="py-10 sm:py-12 bg-white">
+            <div className="container mx-auto">
+                <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 font-poppins text-gray-900">Diagnóstico do Seu Negócio</h2>
+                <p className="text-sm sm:text-base text-gray-700 max-w-2xl mx-auto mb-6 font-inter">
+                    Responda algumas perguntas e veja como a Solaz pode transformar seu negócio com leveza!
+                </p>
+                <form onSubmit={handleSubmit} className="diagnostic-form max-w-md mx-auto">
+                    <div className="progress mb-4">
+                        <div
+                            className="progress-bar"
+                            role="progressbar"
+                            style={{ width: `${progress}%` }}
+                            aria-valuenow={progress}
+                            aria-valuemin="0"
+                            aria-valuemax="100"
+                        >
+                            {answeredCount}/{totalQuestions}
                         </div>
                     </div>
-                </section>
-            );
-        }
-
-        function DiagnosticForm() {
-            const [formData, setFormData] = useState({
-                answers: {},
-                desafio: '', setor: '', urgencia: '', metas: ''
-            });
-            const { quizResults, setQuizResults } = useContext(QuizContext);
-
-            const questions = [
-                "Você sabe exatamente o que o seu negócio representa e o que quer alcançar com ele?",
-                "Você conhece bem os seus clientes e o que eles precisam?",
-                "Você tem um plano para o seu negócio que inclui metas financeiras?",
-                "Você controla regularmente seus ganhos e despesas?",
-                "Você tem procedimentos escritos para como o seu negócio funciona?",
-                "Você verifica frequentemente se o seu negócio está alcançando os objetivos esperados?",
-                "Você tem estratégias para atrair novos clientes e manter os atuais?",
-                "Você sabe quem são os seus concorrentes e o que o diferencia deles?",
-                "Você tem planos para fazer o seu negócio crescer mais?",
-                "Você se sente confortável com as partes técnicas do seu negócio, ou precisa de ajuda?"
-            ];
-
-            const handleAnswerChange = (e) => {
-                const { name, value } = e.target;
-                setFormData(prev => ({
-                    ...prev,
-                    answers: { ...prev.answers, [name]: value }
-                }));
-            };
-
-            const handleChange = (e) => {
-                const { name, value } = e.target;
-                setFormData(prev => ({ ...prev, [name]: value }));
-            };
-
-            const calculateScore = () => {
-                let score = 0;
-                for (let key in formData.answers) {
-                    if (formData.answers[key] === 'sim') score++;
-                }
-                return score;
-            };
-
-            const getPriority = () => {
-                let priorityScore = 0;
-                const scoring = {
-                    desafio: { 'novo_negocio': 3, 'eficiencia': 3, 'manutencao': 2, 'eventos': 2, 'marketing': 2, '': 1, default: 2 },
-                    setor: { gastronomia: 2, construcao: 2, default: 1 },
-                    urgencia: { 'Imediata': 3, 'Média': 2, 'Baixa': 1, '': 1 },
-                    metas: { '': 0, default: formData.metas.length > 20 ? 2 : 1 }
-                };
-
-                Object.keys(scoring).forEach((key) => {
-                    const value = formData[key];
-                    const rules = scoring[key];
-                    if (rules[value]) priorityScore += rules[value];
-                    else if (rules.default) priorityScore += rules.default;
-                });
-
-                return priorityScore <= 5 ? 'Baixa' : priorityScore <= 8 ? 'Média' : 'Alta';
-            };
-
-            const handleSubmit = (e) => {
-                e.preventDefault();
-                const score = calculateScore();
-                const priority = getPriority();
-                let feedback = '';
-                let suggestion = '';
-
-                if (score >= 8) {
-                    feedback = "Seu negócio está brilhando, mas podemos acelerar ainda mais!";
-                } else if (score >= 5) {
-                    feedback = "Você tem uma boa base, mas um empurrãozinho faz a diferença. Vamos juntos?";
-                } else {
-                    feedback = "Seu negócio precisa de um toque especial para decolar. A Solaz te ajuda!";
-                }
-
-                switch (formData.desafio) {
-                    case 'novo_negocio':
-                        suggestion = 'Nosso pacote de Configuração de Negócios vai lançar sua ideia com tudo!';
-                        break;
-                    case 'eficiencia':
-                        suggestion = 'A Eficiência Operacional da Solaz vai simplificar e economizar na sua operação.';
-                        break;
-                    case 'manutencao':
-                        suggestion = 'Com Gestão de Manutenção, seus equipamentos nunca te deixam na mão!';
-                        break;
-                    case 'eventos':
-                        suggestion = 'Nosso Planejamento de Eventos cria momentos que sua marca merece.';
-                        break;
-                    case 'marketing':
-                        suggestion = 'Turbine sua presença com nossas Estratégias de Marketing vibrantes!';
-                        break;
-                    default:
-                        suggestion = 'Vamos criar uma solução sob medida para seu desafio!';
-                }
-
-                setQuizResults({ score, priority, feedback, suggestion });
-            };
-
-            const totalQuestions = 10;
-            const answeredCount = Object.keys(formData.answers).length;
-            const progress = (answeredCount / totalQuestions) * 100;
-
-            return (
-                <section id="diagnostico" className="py-10 sm:py-12">
-                    <div className="container mx-auto">
-                        <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6">Diagnóstico do Seu Negócio</h2>
-                        <p className="text-sm sm:text-base text-gray-700 max-w-2xl mx-auto mb-6">
-                            Responda algumas perguntas e veja como a Solaz pode transformar seu negócio com leveza!
-                        </p>
-                        <form onSubmit={handleSubmit} className="diagnostic-form max-w-md mx-auto">
-                            <div className="progress mb-4">
-                                <div
-                                    className="progress-bar"
-                                    role="progressbar"
-                                    style={{ width: `${progress}%` }}
-                                    aria-valuenow={progress}
-                                    aria-valuemin="0"
-                                    aria-valuemax="100"
-                                >
-                                    {answeredCount}/{totalQuestions}
+                    {questions.map((question, i) => (
+                        <div key={i} className="mb-4">
+                            <label className="block mb-2 text-white font-inter">{i + 1}. {question}</label>
+                            <div className="flex space-x-4">
+                                <div className="form-check form-check-inline">
+                                    <input
+                                        className="form-check-input"
+                                        type="radio"
+                                        id={`q${i + 1}-sim`}
+                                        name={`q${i + 1}`}
+                                        value="sim"
+                                        onChange={handleAnswerChange}
+                                    />
+                                    <label className="form-check-label text-sm sm:text-base text-white font-inter" htmlFor={`q${i + 1}-sim`}>Sim</label>
+                                </div>
+                                <div className="form-check form-check-inline">
+                                    <input
+                                        className="form-check-input"
+                                        type="radio"
+                                        id={`q${i + 1}-nao`}
+                                        name={`q${i + 1}`}
+                                        value="nao"
+                                        onChange={handleAnswerChange}
+                                    />
+                                    <label className="form-check-label text-sm sm:text-base text-white font-inter" htmlFor={`q${i + 1}-nao`}>Não</label>
                                 </div>
                             </div>
-                            {questions.map((question, i) => (
-                                <div key={i} className="mb-4">
-                                    <label className="block mb-2 text-gray-700 text-sm sm:text-base">{i + 1}. {question}</label>
-                                    <div className="flex space-x-4">
-                                        <div className="form-check form-check-inline">
-                                            <input
-                                                className="form-check-input"
-                                                type="radio"
-                                                id={`q${i + 1}-sim`}
-                                                name={`q${i + 1}`}
-                                                value="sim"
-                                                onChange={handleAnswerChange}
-                                            />
-                                            <label className="form-check-label text-sm sm:text-base" htmlFor={`q${i + 1}-sim`}>Sim</label>
-                                        </div>
-                                        <div className="form-check form-check-inline">
-                                            <input
-                                                className="form-check-input"
-                                                type="radio"
-                                                id={`q${i + 1}-nao`}
-                                                name={`q${i + 1}`}
-                                                value="nao"
-                                                onChange={handleAnswerChange}
-                                            />
-                                            <label className="form-check-label text-sm sm:text-base" htmlFor={`q${i + 1}-nao`}>Não</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                            <div className="mb-4">
-                                <label className="block mb-2 text-gray-700 text-sm sm:text-base">Qual é o maior desafio do seu negócio hoje?</label>
-                                <select name="desafio" onChange={handleChange} className="w-full p-2 border rounded text-sm sm:text-base">
-                                    <option value="">Selecione</option>
-                                    <option value="novo_negocio">Lançar um novo negócio</option>
-                                    <option value="eficiencia">Melhorar eficiência operacional</option>
-                                    <option value="manutencao">Gerenciar manutenção</option>
-                                    <option value="eventos">Planejar eventos</option>
-                                    <option value="marketing">Fortalecer marketing</option>
-                                    <option value="Outro">Outro</option>
-                                </select>
-                            </div>
-                            <div className="mb-4">
-                                <label className="block mb-2 text-gray-700 text-sm sm:text-base">Em qual setor seu negócio atua?</label>
-                                <select name="setor" onChange={handleChange} className="w-full p-2 border rounded text-sm sm:text-base">
-                                    <option value="">Selecione</option>
-                                    <option value="gastronomia">Gastronomia</option>
-                                    <option value="construcao">Construção</option>
-                                    <option value="varejo">Varejo</option>
-                                    <option value="servicos">Serviços</option>
-                                    <option value="tecnologia">Tecnologia</option>
-                                    <option value="Outro">Outro</option>
-                                </select>
-                            </div>
-                            <div className="mb-4">
-                                <label className="block mb-2 text-gray-700 text-sm sm:text-base">Qual a urgência para resolver esse desafio?</label>
-                                <select name="urgencia" onChange={handleChange} className="w-full p-2 border rounded text-sm sm:text-base">
-                                    <option value="">Selecione</option>
-                                    <option value="Imediata">Imediata (1-3 meses)</option>
-                                    <option value="Média">Média (3-6 meses)</option>
-                                    <option value="Baixa">Baixa (6+ meses)</option>
-                                </select>
-                            </div>
-                            <div className="mb-4">
-                                <label className="block mb-2 text-gray-700 text-sm sm:text-base">Quais são suas metas de curto prazo (6-12 meses)?</label>
-                                <input
-                                    type="text"
-                                    name="metas"
-                                    value={formData.metas}
-                                    onChange={handleChange}
-                                    className="w-full p-2 border rounded text-sm sm:text-base"
-                                    placeholder="Ex.: Aumentar vendas, reduzir custos"
-                                />
-                            </div>
-                            <button
-                                type="submit"
-                                className="bg-yellow-400 text-gray-800 px-4 sm:px-6 py-2 sm:py-3 rounded animate-button text-sm sm:text-base w-full sm:w-auto"
-                                disabled={answeredCount !== totalQuestions}
-                            >
-                                Ver Resultados
-                            </button>
-                            {quizResults && (
-                                <div className="mt-6 p-4 border rounded bg-white">
-                                    <h3 className="text-base sm:text-lg font-bold">Resultado do Diagnóstico</h3>
-                                    <p className="text-sm sm:text-base"><strong>Pontuação:</strong> {quizResults.score}/10</p>
-                                    <p className="text-sm sm:text-base"><strong>Prioridade:</strong> {quizResults.priority}</p>
-                                    <p className="text-sm sm:text-base">{quizResults.feedback}</p>
-                                    <p className="text-sm sm:text-base">{quizResults.suggestion}</p>
-                                    <p className="text-sm sm:text-base">Fale com a Solaz: <a href="mailto:contato@solaz.com" className="text-blue-600">contato@solaz.com</a></p>
-                                </div>
-                            )}
-                        </form>
-                        <img src="https://images.pexels.com/photos/4386426/pexels-photo-4386426.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Empreendedora analisando negócios em tablet" className="section-image mt-6 mx-auto" />
+                        </div>
+                    ))}
+                    <div className="mb-4">
+                        <label className="block mb-2 text-white font-inter">Qual é o maior desafio do seu negócio hoje?</label>
+                        <select name="desafio" onChange={handleChange} className="w-full p-2 border rounded bg-gray-700 text-white text-sm sm:text-base font-inter">
+                            <option value="">Selecione</option>
+                            <option value="novo_negocio">Lançar um novo negócio</option>
+                            <option value="eficiencia">Melhorar eficiência operacional</option>
+                            <option value="manutencao">Gerenciar manutenção</option>
+                            <option value="eventos">Planejar eventos</option>
+                            <option value="marketing">Fortalecer marketing</option>
+                            <option value="Outro">Outro</option>
+                        </select>
                     </div>
-                </section>
-            );
-        }
-
-        function ContatoSection() {
-            const [formData, setFormData] = useState({ nome: '', email: '', mensagem: '' });
-            const [isSubmitting, setIsSubmitting] = useState(false);
-            const [submitStatus, setSubmitStatus] = useState(null);
-
-            const handleChange = (e) => {
-                const { name, value } = e.target;
-                setFormData(prev => ({ ...prev, [name]: value }));
-            };
-
-            const handleSubmit = (e) => {
-                e.preventDefault();
-                setIsSubmitting(true);
-                setTimeout(() => {
-                    console.log('Dados enviados:', formData);
-                    setIsSubmitting(false);
-                    setSubmitStatus('success');
-                    setFormData({ nome: '', email: '', mensagem: '' });
-                }, 1000);
-            };
-
-            return (
-                <section id="contato" className="py-10 sm:py-12 bg-gray-100">
-                    <div className="container mx-auto">
-                        <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6">Fale com a Solaz</h2>
-                        <p className="text-sm sm:text-base text-gray-700 max-w-2xl mx-auto mb-6">
-                            Quer crescer com leveza e diversão? Mande sua mensagem ou chame no WhatsApp!
-                        </p>
-                        <form onSubmit={handleSubmit} className="max-w-md mx-auto">
-                            <div className="mb-4">
-                                <label className="block mb-2 text-gray-700 text-sm sm:text-base">Nome:</label>
-                                <input
-                                    type="text"
-                                    name="nome"
-                                    value={formData.nome}
-                                    onChange={handleChange}
-                                    className="w-full p-2 border rounded text-sm sm:text-base"
-                                    placeholder="Seu nome"
-                                    required
-                                />
-                            </div>
-                            <div className="mb-4">
-                                <label className="block mb-2 text-gray-700 text-sm sm:text-base">Email:</label>
-                                <input
-                                    type="email"
-                                    name="email"
-                                    value={formData.email}
-                                    onChange={handleChange}
-                                    className="w-full p-2 border rounded text-sm sm:text-base"
-                                    placeholder="Seu email"
-                                    required
-                                />
-                            </div>
-                            <div className="mb-4">
-                                <label className="block mb-2 text-gray-700 text-sm sm:text-base">Mensagem:</label>
-                                <textarea
-                                    name="mensagem"
-                                    value={formData.mensagem}
-                                    onChange={handleChange}
-                                    className="w-full p-2 border rounded text-sm sm:text-base"
-                                    rows="4"
-                                    placeholder="Sua mensagem"
-                                    required
-                                ></textarea>
-                            </div>
-                            <button
-                                type="submit"
-                                className="bg-yellow-400 text-gray-800 px-4 sm:px-6 py-2 sm:py-3 rounded animate-button text-sm sm:text-base w-full sm:w-auto"
-                                disabled={isSubmitting}
-                            >
-                                {isSubmitting ? 'Enviando...' : 'Enviar'}
-                            </button>
-                            {submitStatus === 'success' && (
-                                <div className="mt-4 p-4 border rounded bg-green-100 text-green-800">
-                                    Mensagem enviada com sucesso! Logo entraremos em contato.
-                                </div>
-                            )}
-                        </form>
-                        <img src="https://images.pexels.com/photos/3184293/pexels-photo-3184293.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Empreendedora atendendo clientes" className="section-image mt-6 mx-auto" />
+                    <div className="mb-4">
+                        <label className="block mb-2 text-white font-inter">Em qual setor seu negócio atua?</label>
+                        <select name="setor" onChange={handleChange} className="w-full p-2 border rounded bg-gray-700 text-white text-sm sm:text-base font-inter">
+                            <option value="">Selecione</option>
+                            <option value="gastronomia">Gastronomia</option>
+                            <option value="construcao">Construção</option>
+                            <option value="varejo">Varejo</option>
+                            <option value="servicos">Serviços</option>
+                            <option value="tecnologia">Tecnologia</option>
+                            <option value="Outro">Outro</option>
+                        </select>
                     </div>
-                </section>
-            );
-        }
-
-        function Footer() {
-            return (
-                <footer className="bg-gray-800 text-white py-6">
-                    <div className="container mx-auto text-center">
-                        <p className="text-sm sm:text-base">© 2025 Solaz Consultoria. Todos os direitos reservados.</p>
-                        <p className="text-sm sm:text-base"><a href="mailto:contato@solaz.com" className="text-yellow-400">contato@solaz.com</a></p>
+                    <div className="mb-4">
+                        <label className="block mb-2 text-white font-inter">Qual a urgência para resolver esse desafio?</label>
+                        <select name="urgencia" onChange={handleChange} className="w-full p-2 border rounded bg-gray-700 text-white text-sm sm:text-base font-inter">
+                            <option value="">Selecione</option>
+                            <option value="Imediata">Imediata (1-3 meses)</option>
+                            <option value="Média">Média (3-6 meses)</option>
+                            <option value="Baixa">Baixa (6+ meses)</option>
+                        </select>
                     </div>
-                </footer>
-            );
-        }
+                    <div className="mb-4">
+                        <label className="block mb-2 text-white font-inter">Quais são suas metas de curto prazo (6-12 meses)?</label>
+                        <input
+                            type="text"
+                            name="metas"
+                            value={formData.metas}
+                            onChange={handleChange}
+                            className="w-full p-2 border rounded bg-gray-700 text-white text-sm sm:text-base font-inter"
+                            placeholder="Ex.: Aumentar vendas, reduzir custos"
+                        />
+                    </div>
+                    <button
+                        type="submit"
+                        className="bg-yellow-400 text-gray-800 px-4 sm:px-6 py-2 sm:py-3 rounded-full animate-button text-sm sm:text-base w-full sm:w-auto"
+                        disabled={answeredCount !== totalQuestions}
+                    >
+                        Ver Resultados
+                    </button>
+                    {quizResults && (
+                        <div className="mt-6 p-4 border rounded bg-white">
+                            <h3 className="text-base sm:text-lg font-bold font-poppins">Resultado do Diagnóstico</h3>
+                            <p className="text-sm sm:text-base font-inter"><strong>Pontuação:</strong> {quizResults.score}/10</p>
+                            <p className="text-sm sm:text-base font-inter"><strong>Prioridade:</strong> {quizResults.priority}</p>
+                            <p className="text-sm sm:text-base font-inter">{quizResults.feedback}</p>
+                            <p className="text-sm sm:text-base font-inter">{quizResults.suggestion}</p>
+                            <p className="text-sm sm:text-base font-inter">Fale com a Solaz: <a href="mailto:contato@solaz.com" className="text-blue-600">contato@solaz.com</a></p>
+                        </div>
+                    )}
+                </form>
+                <img src="pexels-helenalopes-3215526.jpg" alt="Empreendedora analisando negócios em tablet" className="section-image mt-6 mx-auto" />
+            </div>
+        </section>
+    );
+}
+function ContatoSection() {
+    const [formData, setFormData] = useState({ nome: '', email: '', mensagem: '' });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState(null);
 
-        function App() {
-            return (
-                <QuizProvider>
-                    <NavBar />
-                    <HeroSection />
-                    <SobreSection />
-                    <ServicosSection />
-                    <TestemunhosSection />
-                    <DiagnosticForm />
-                    <ContatoSection />
-                    <Footer />
-                </QuizProvider>
-            );
-        }
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
+    };
 
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<App />);
-    </script>
-</body>
-</html>
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        setTimeout(() => {
+            console.log('Dados enviados:', formData);
+            setIsSubmitting(false);
+            setSubmitStatus('success');
+            setFormData({ nome: '', email: '', mensagem: '' });
+        }, 1000);
+    };
+
+    return (
+        <section id="contato" className="py-10 sm:py-12 bg-gray-100">
+            <div className="container mx-auto">
+                <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 font-poppins text-gray-900">Fale com a Solaz</h2>
+                <p className="text-sm sm:text-base text-gray-700 max-w-2xl mx-auto mb-6 font-inter">
+                    Quer crescer com leveza e diversão? Mande sua mensagem ou chame no WhatsApp!
+                </p>
+                <form onSubmit={handleSubmit} className="max-w-md mx-auto">
+                    <div className="mb-4">
+                        <label className="block mb-2 text-gray-700 text-sm sm:text-base">Nome:</label>
+                        <input
+                            type="text"
+                            name="nome"
+                            value={formData.nome}
+                            onChange={handleChange}
+                            className="w-full p-2 border rounded text-sm sm:text-base"
+                            placeholder="Seu nome"
+                            required
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <label className="block mb-2 text-gray-700 text-sm sm:text-base">Email:</label>
+                        <input
+                            type="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            className="w-full p-2 border rounded text-sm sm:text-base"
+                            placeholder="Seu email"
+                            required
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <label className="block mb-2 text-gray-700 text-sm sm:text-base">Mensagem:</label>
+                        <textarea
+                            name="mensagem"
+                            value={formData.mensagem}
+                            onChange={handleChange}
+                            className="w-full p-2 border rounded text-sm sm:text-base"
+                            rows="4"
+                            placeholder="Sua mensagem"
+                            required
+                        ></textarea>
+                    </div>
+                    <button
+                        type="submit"
+                        className="bg-yellow-400 text-gray-800 px-4 sm:px-6 py-2 sm:py-3 rounded animate-button text-sm sm:text-base w-full sm:w-auto"
+                        disabled={isSubmitting}
+                    >
+                        {isSubmitting ? 'Enviando...' : 'Enviar'}
+                    </button>
+                    {submitStatus === 'success' && (
+                        <div className="mt-4 p-4 border rounded bg-green-100 text-green-800">
+                            Mensagem enviada com sucesso! Logo entraremos em contato.
+                        </div>
+                    )}
+                </form>
+                <img src="https://images.pexels.com/photos/3184293/pexels-photo-3184293.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Empreendedora atendendo clientes" className="section-image mt-6 mx-auto" />
+            </div>
+        </section>
+    );
+}
+
+function Footer() {
+    return (
+        <footer className="bg-gray-800 text-white py-6">
+            <div className="container mx-auto text-center">
+                <p className="text-sm sm:text-base">© 2025 Solaz Consultoria. Todos os direitos reservados.</p>
+                <p className="text-sm sm:text-base"><a href="mailto:contato@solaz.com" className="text-yellow-400">contato@solaz.com</a></p>
+                <div className="flex justify-center space-x-4 mt-4">
+                    <a href="https://wa.me/5511999999999" target="_blank" rel="noreferrer" className="text-yellow-400">
+                        <svg width="40" height="41" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 40.25C31.0457 40.25 40 31.2957 40 20.25C40 9.2043 31.0457 0.25 20 0.25C8.9543 0.25 0 9.2043 0 20.25C0 31.2957 8.9543 40.25 20 40.25Z" fill="#181A20"></path>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M20.6592 31.3773H20.6543C18.6639 31.3766 16.7081 30.8772 14.9711 29.9297L8.66663 31.5835L10.3538 25.4209C9.31307 23.6173 8.76544 21.5714 8.76633 19.4754C8.76894 12.9182 14.104 7.5835 20.6591 7.5835C23.8405 7.58487 26.8265 8.82338 29.0718 11.0713C31.3171 13.3192 32.553 16.3071 32.5517 19.4847C32.5491 26.0404 27.2162 31.3746 20.6592 31.3773ZM15.2633 27.7769L15.6242 27.9911C17.1419 28.8917 18.8816 29.3682 20.6553 29.3689H20.6593C26.1074 29.3689 30.5417 24.9346 30.5438 19.4842C30.5449 16.843 29.5177 14.3595 27.6514 12.4911C25.7852 10.6227 23.3034 9.59324 20.6632 9.59233C15.2108 9.59233 10.7765 14.0262 10.7744 19.4762C10.7736 21.3439 11.2962 23.1629 12.2857 24.7367L12.5207 25.1107L11.5221 28.7583L15.2633 27.7769ZM26.2435 22.0454C26.4507 22.1456 26.5907 22.2132 26.6505 22.313C26.7247 22.4369 26.7247 23.0318 26.4772 23.7261C26.2295 24.4202 25.0424 25.0537 24.4714 25.139C23.9595 25.2155 23.3116 25.2474 22.5998 25.0212C22.1682 24.8843 21.6147 24.7014 20.9057 24.3953C18.12 23.1924 16.2373 20.4923 15.8815 19.982C15.8566 19.9463 15.8392 19.9213 15.8294 19.9083L15.827 19.9051C15.6698 19.6953 14.6161 18.2894 14.6161 16.8343C14.6161 15.4656 15.2884 14.7481 15.5979 14.4179C15.6191 14.3952 15.6386 14.3744 15.6561 14.3554C15.9285 14.0579 16.2504 13.9835 16.4485 13.9835C16.6466 13.9835 16.8449 13.9853 17.018 13.994C17.0394 13.9951 17.0616 13.9949 17.0846 13.9948C17.2578 13.9938 17.4737 13.9925 17.6866 14.5041C17.7686 14.701 17.8884 14.9928 18.0149 15.3006C18.2706 15.9232 18.5531 16.611 18.6028 16.7105C18.6771 16.8593 18.7266 17.0327 18.6276 17.2311C18.6127 17.2609 18.599 17.289 18.5858 17.3158C18.5114 17.4677 18.4567 17.5794 18.3304 17.7268C18.2808 17.7848 18.2295 17.8473 18.1782 17.9098C18.0759 18.0343 17.9737 18.1588 17.8847 18.2475C17.7359 18.3956 17.5811 18.5564 17.7544 18.8539C17.9278 19.1514 18.5241 20.1244 19.4075 20.9124C20.3571 21.7594 21.1825 22.1174 21.6008 22.2989C21.6825 22.3343 21.7487 22.363 21.7972 22.3873C22.0943 22.5361 22.2676 22.5112 22.441 22.313C22.6143 22.1146 23.1838 21.4452 23.3819 21.1478C23.5799 20.8504 23.7781 20.8999 24.0504 20.9991C24.3229 21.0983 25.7838 21.8171 26.081 21.9658C26.139 21.9949 26.1932 22.0211 26.2435 22.0454Z" fill="#FFFFFF"></path>
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/solazconsultoria/" target="_blank" rel="noreferrer" className="text-yellow-400">
+                        <svg width="40" height="41" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 20.25C0 9.2043 8.9543 0.25 20 0.25C31.0457 0.25 40 9.2043 40 20.25C40 31.2957 31.0457 40.25 20 40.25C8.9543 40.25 0 31.2957 0 20.25Z" fill="#181A20"></path>
+                            <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="40" height="41"><path fill-rule="evenodd" clip-rule="evenodd" d="M0 20.25C0 9.2043 8.9543 0.25 20 0.25C31.0457 0.25 40 9.2043 40 20.25C40 31.2957 31.0457 40.25 20 40.25C8.9543 40.25 0 31.2957 0 20.25Z" fill="#FFFFFF"></path></mask>
+                            <g mask="url(#mask0)"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.001 9.58301C17.1041 9.58301 16.7406 9.59567 15.6028 9.64745C14.4672 9.69945 13.6921 9.87923 13.0139 10.143C12.3123 10.4155 11.7172 10.7799 11.1243 11.373C10.5309 11.9659 10.1665 12.561 9.89316 13.2624C9.62871 13.9408 9.44871 14.7162 9.3976 15.8513C9.34671 16.9891 9.33337 17.3529 9.33337 20.2498C9.33337 23.1467 9.34626 23.5092 9.39782 24.6469C9.45004 25.7825 9.62982 26.5576 9.89338 27.2359C10.166 27.9374 10.5305 28.5325 11.1236 29.1254C11.7163 29.7188 12.3114 30.0841 13.0125 30.3566C13.6912 30.6203 14.4665 30.8001 15.6019 30.8521C16.7397 30.9039 17.103 30.9166 19.9997 30.9166C22.8968 30.9166 23.2593 30.9039 24.3971 30.8521C25.5327 30.8001 26.3087 30.6203 26.9873 30.3566C27.6887 30.0841 28.2829 29.7188 28.8756 29.1254C29.4689 28.5325 29.8334 27.9374 30.1067 27.2361C30.3689 26.5576 30.5489 25.7823 30.6023 24.6472C30.6534 23.5094 30.6667 23.1467 30.6667 20.2498C30.6667 17.3529 30.6534 16.9893 30.6023 15.8515C30.5489 14.716 30.3689 13.9408 30.1067 13.2626C29.8334 12.561 29.4689 11.9659 28.8756 11.373C28.2822 10.7797 27.6889 10.4152 26.9867 10.143C26.3067 9.87923 25.5311 9.69945 24.3955 9.64745C23.2577 9.59567 22.8955 9.58301 19.9977 9.58301H20.001ZM19.0441 11.5052C19.2299 11.5049 19.4298 11.505 19.6455 11.5051L20.001 11.5052C22.849 11.5052 23.1866 11.5154 24.3113 11.5665C25.3513 11.6141 25.9157 11.7878 26.2918 11.9338C26.7895 12.1272 27.1444 12.3583 27.5175 12.7316C27.8909 13.105 28.122 13.4605 28.3158 13.9583C28.4618 14.3339 28.6358 14.8983 28.6831 15.9383C28.7342 17.0628 28.7453 17.4006 28.7453 20.2473C28.7453 23.094 28.7342 23.4317 28.6831 24.5562C28.6356 25.5962 28.4618 26.1607 28.3158 26.5362C28.1224 27.034 27.8909 27.3884 27.5175 27.7616C27.1442 28.1349 26.7898 28.366 26.2918 28.5594C25.9162 28.706 25.3513 28.8794 24.3113 28.9269C23.1868 28.978 22.849 28.9891 20.001 28.9891C17.1528 28.9891 16.8152 28.978 15.6907 28.9269C14.6507 28.8789 14.0863 28.7051 13.7101 28.5591C13.2123 28.3658 12.8567 28.1347 12.4834 27.7613C12.11 27.388 11.8789 27.0333 11.6852 26.5353C11.5391 26.1598 11.3651 25.5953 11.3178 24.5553C11.2667 23.4309 11.2565 23.0931 11.2565 20.2446C11.2565 17.3961 11.2667 17.0601 11.3178 15.9357C11.3654 14.8957 11.5391 14.3312 11.6852 13.9552C11.8785 13.4574 12.11 13.1019 12.4834 12.7285C12.8567 12.3552 13.2123 12.1241 13.7101 11.9303C14.0861 11.7836 14.6507 11.6103 15.6907 11.5625C16.6748 11.5181 17.0561 11.5047 19.0441 11.5025V11.5052ZM24.4148 14.556C24.4148 13.8492 24.9882 13.2765 25.6949 13.2765V13.276C26.4015 13.276 26.9749 13.8494 26.9749 14.556C26.9749 15.2627 26.4015 15.8361 25.6949 15.8361C24.9882 15.8361 24.4148 15.2627 24.4148 14.556ZM20.0009 14.772C16.9758 14.7721 14.5233 17.2248 14.5233 20.2499C14.5233 23.275 16.976 25.7266 20.0011 25.7266C23.0262 25.7266 25.478 23.275 25.478 20.2499C25.478 17.2247 23.026 14.772 20.0009 14.772ZM23.5567 20.2499C23.5567 18.2861 21.9647 16.6943 20.0011 16.6943C18.0373 16.6943 16.4455 18.2861 16.4455 20.2499C16.4455 22.2134 18.0373 23.8055 20.0011 23.8055C21.9647 23.8055 23.5567 22.2134 23.5567 20.2499Z" fill="#FFFFFF"></path></g>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </footer>
+    );
+}
+
+function App() {
+    return (
+        <QuizProvider>
+            <NavBar />
+            <HeroSection />
+            <SobreSection />
+            <ServicosSection />
+            <TestemunhosSection />
+            <DiagnosticForm />
+            <ContatoSection />
+            <Footer />
+        </QuizProvider>
+    );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
