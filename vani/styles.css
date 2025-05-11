@@ -68,10 +68,10 @@ html, body {
 }
 
 .lightning-symbol {
-    font-size: 150px;
+    font-size: 125px;
     color: var(--gold);
     display: block;
-    line-height: 150px;
+    line-height: 125px;
     margin: 0;
 }
 
