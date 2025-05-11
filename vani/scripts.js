@@ -6,10 +6,11 @@ function showSpiritualEmergency() {
 function sendToWhatsApp() {
     const mood = document.getElementById('mood-slider').value;
     const message = document.getElementById('message-input').value;
-    const moodText = mood < 20 ? 'Extrema Angústia' :
-                     mood < 40 ? 'Muito Desconforto' :
+    const moodText = mood < 20 ? 'Desequilíbrio' :
+                     mood < 40 ? 'Inquietação' :
                      mood < 60 ? 'Equilíbrio' :
-                     mood < 80 ? 'Bem-Estar' : 'Euforia';
+                     mood < 80 ? 'Harmonia' :
+                     'Paz';
     const whatsappMessage = encodeURIComponent(
         `Pronto Socorro Espiritual\nEstado: ${moodText}\nMensagem: ${message || 'Nenhuma mensagem fornecida'}`
     );
