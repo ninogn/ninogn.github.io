@@ -16,3 +16,12 @@ function sendToWhatsApp() {
     const whatsappLink = `https://wa.me/21972280397?text=${whatsappMessage}`;
     window.open(whatsappLink, '_blank');
 }
+
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+        alert('Código PIX copiado para a área de transferência!');
+    }).catch(err => {
+        console.error('Erro ao copiar: ', err);
+        alert('Falha ao copiar o código PIX.');
+    });
+}
