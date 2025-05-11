@@ -14,7 +14,7 @@ function sendToWhatsApp() {
     const whatsappMessage = encodeURIComponent(
         `Pronto Socorro Espiritual\nEstado: ${moodText}\nMensagem: ${message || 'Nenhuma mensagem fornecida'}`
     );
-    const whatsappLink = `https://wa.me/21972280397?text=${whatsappMessage}`;
+    const whatsappLink = `https://wa.me/5521972280397?text=${whatsappMessage}`;
     window.open(whatsappLink, '_blank');
 }
 
