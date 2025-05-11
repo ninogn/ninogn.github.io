@@ -26,3 +26,23 @@ function copyToClipboard(text) {
         alert('Falha ao copiar o código PIX.');
     });
 }
+
+function shareSite() {
+    const shareData = {
+        title: 'Sacerdotisa Vanidoya',
+        text: 'Conheça o trabalho espiritual da Sacerdotisa Vanidoya!',
+        url: window.location.href
+    };
+    if (navigator.share) {
+        navigator.share(shareData).catch(err => {
+            console.error('Erro ao compartilhar: ', err);
+        });
+    } else {
+        navigator.clipboard.writeText(shareData.url).then(() => {
+            alert('Link do site copiado para a área de transferência!');
+        }).catch(err => {
+            console.error('Erro ao copiar: ', err);
+            alert('Falha ao copiar o link do site.');
+        });
+    }
+}
